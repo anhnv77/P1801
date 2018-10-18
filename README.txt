@@ -1,7 +1,7 @@
 # P1801
 
 Date: 18/10/2018
-  *) DataVisualization demo
+  *) DataVisualization demo version
   Add DataVisualization package
     -) Function: 
       +) fileVisualizer: display file feature
