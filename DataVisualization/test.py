@@ -1,6 +1,12 @@
-import DataVisualization.DrawChart
+import DataVisualization.DrawChart as draw
 
-df = DataVisualization.DrawChart.fileVisualizer("data/housing.csv")
-#DataVisualization.DrawChart.drawBar(df, ['RM', 'LSTAT', 'PTRATIO'], 0, 9, True, True)
-#DataVisualization.DrawChart.drawLine(df, ['RM', 'LSTAT', 'PTRATIO'])
-DataVisualization.DrawChart.drawHistogram(df, 'MEDV', 0, 489)
+df = draw.fileVisualizer("data/housing.csv")
+
+#Draw barh chart plot with cols[0:3], rows[0:10] and stacked
+#draw.drawBar(df, range(10), range(3), True, True)
+
+#Draw line chart plot with cols[0:3] and rows[0:10]
+#draw.drawLine(df, range(10), range(3))
+
+#Draw histogram chart plot with cols[0] and rows[0:max]
+draw.drawHistogram(df, range(len(df.index)), 0, 50)
