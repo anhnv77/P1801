@@ -1,9 +1,10 @@
-import DataVisualization.DrawChart as vsl #visualizer
+import DataVisualization.DrawChart as vsl
+import DataVisualization.ScatterPlot as sct
 
-df = vsl.fileVisualizer("data/housing.csv")
+df = vsl.fileVisualizer('data\stcp-Rdataset-Diet.csv')
 
-cols = range(3)
-rows = range(100)
+cols = range(3, 5)
+rows = range(20)
 
 '''Draw barh chart plot with cols=cols, rows=rows and stacked'''
 #vsl.drawBar(df, rows, cols, True, True)
@@ -27,4 +28,4 @@ rows = range(100)
 #vsl.drawViolin(df, 0)
 
 '''Draw scatter plot with col[0] and col[3]'''
-vsl.drawScatter(df, 0, 3)
+#vsl.drawScatter(df, 0, 3)\

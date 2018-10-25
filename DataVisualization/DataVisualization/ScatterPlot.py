@@ -1,36 +1,22 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
+import seaborn as sns
 from pandas.plotting import scatter_matrix
 
-
-def fileVisualizer(path):
-    '''
-        :param path: Path to your file
-        :return: a DataFrame of your file
-    '''
-    df = pd.read_csv(path)
-
-    print(df)
-    print('-' * 50)
-    print(df.describe())
-    return df
-
-
 def _2D_Scatter_Plot(dataFrame, _1st_index, _2nd_index):
-
     '''
-    :param dataFrame: all the data you want to visualize
-    :param _1st_index: the first attribute signed as Ox line
-    :param _2nd_index: the second attribute signed as Oy line
+    :param dataFrame: All the data you want to visualize
+    :param _1st_index: The first attribute signed as Ox line
+    :param _2nd_index: The second attribute signed as Oy line
     '''
 
-    color = np.random.rand(3)
     area = 10 ** 2
-    plt.scatter(dataFrame.iloc[:,0:_1st_index+1], dataFrame.iloc[:,1:_2nd_index+1], s=area, marker='x',alpha=0.5)
+    Ox = dataFrame.iloc[:,0:_1st_index+1]
+    Oy = dataFrame.iloc[:,1:_2nd_index+1]
+    plt.scatter(Ox, Oy, s=area, marker='x', color = 'r', alpha=0.5)
 
-    # get names of attributes
+    # Get names of attributes
     attributeName = list(dataFrame)
 
     plt.xlabel(attributeName[_1st_index])
@@ -48,14 +34,15 @@ def _3D_Scatter_Plot(dataFrame, _1st_index, _2nd_index, _3rd_index):
 
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
-
-    color = np.random.rand(3)
     area = 10 ** 2
+    Ox = dataFrame.iloc[:, 0:_1st_index+1]
+    Oy = dataFrame.iloc[:, 1:_2nd_index+1]
+    Oz = dataFrame.iloc[:, 2:_3rd_index+1]
 
-    ax.scatter(dataFrame.iloc[:,0:_1st_index+1], dataFrame.iloc[:,1:_2nd_index+1], dataFrame.iloc[:,2:_3rd_index+1],
-               s=area, marker='x',alpha=0.5)
+    ax.scatter(Ox, Oy, Oz,
+               s=area, marker='x', alpha=0.5, color='r')
 
-    # get names of attributes
+    # Get names of attributes
     attributeName = list(dataFrame)
 
     ax.set_xlabel(attributeName[_1st_index])
@@ -63,8 +50,31 @@ def _3D_Scatter_Plot(dataFrame, _1st_index, _2nd_index, _3rd_index):
     ax.set_zlabel(attributeName[_3rd_index])
     plt.show()
 
-def _multiD_Scatter_Plot(dataFrame):
-    scatter_matrix(dataFrame, alpha=0.2, figsize=(6, 6), diagonal='kde')
-    plt.show()
-
-
+def multiMatrix(dataFrame, rowsIndex = np.arange(50), colsIndex_x=None,
+			 colsIndex_y=None, height=2.5, aspect=1, kind='reg', diag_kind='hist'):
+	'''
+        :param dataFrame: the DataFrame need ploting
+        :param rowsIndex: rows you want to display in your chart:
+			+ pass a num: row to display one row
+            + pass an array: [num1, num2, num3, ...] to display rows you want
+			+ pass: range(start, end), for multiple rows
+        :param colsIndex_x: cols you want to display in your chart by layber x_vars:
+			+ the row of the figure
+        :param colsIndex_y: cols you want to display in your chart by layber x_vars:
+			+ the row of the figure
+		:param height: a num which is height of each facet
+		:param aspect: a num, (Aspect * height) gives the width of each facet
+		:param kind: Kind of plot for the non-identity relationships
+			+ can pass one of {‘scatter’, ‘reg’}, if pass 'reg' it will add a line represent for linear relationship
+		:param diag_kind : Kind of plot for the diagonal subplots
+						+ can pass one of {‘auto’, ‘hist’, ‘kde’}, 'auto' and 'hist' is the same
+        :return: void
+    '''
+	head = dataFrame.columns.values
+	if colsIndex_x==None:
+		colsIndex_x = np.arange(len(head))
+	if colsIndex_y==None:
+		colsIndex_y = np.arange(len(head))
+	sns.pairplot(dataFrame.iloc[rowsIndex:], x_vars=head[colsIndex_x],
+				 y_vars=head[colsIndex_y], aspect=aspect, kind=kind, diag_kind=diag_kind)
+	plt.show()

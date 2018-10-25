@@ -87,17 +87,3 @@ def drawViolin(dataFrame, cols, vert=False):
     df = dataFrame.iloc[:, cols]
     plt.violinplot(df, vert=vert, showmedians=True)
     plt.show()
-
-def drawScatter(dataFrame, cols_1, cols_2, color='r', marker='x'):
-    '''
-    :param cols_1: Ox
-    :param cols_2: Oy
-    :param color: Colour of points
-    :param marker: Shape of points
-    :return: Void
-    '''
-
-    df1 = dataFrame.iloc[:, cols_1]
-    df2 = dataFrame.iloc[:, cols_2]
-    plt.scatter(df1, df2, marker=marker, color=color, alpha=0.5)
-    plt.show()
