@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from pandas.plotting import scatter_matrix
 
-def _2D_Scatter_Plot(dataFrame, _1st_index, _2nd_index):
+def Scatter_2D(dataFrame, _1st_index, _2nd_index):
     '''
     :param dataFrame: All the data you want to visualize
     :param _1st_index: The first attribute signed as Ox line
@@ -23,7 +23,7 @@ def _2D_Scatter_Plot(dataFrame, _1st_index, _2nd_index):
     plt.ylabel(attributeName[_2nd_index])
     plt.show()
 
-def _3D_Scatter_Plot(dataFrame, _1st_index, _2nd_index, _3rd_index):
+def Scatter_3D(dataFrame, _1st_index, _2nd_index, _3rd_index):
 
     '''
     :param dataFrame: all the data you want to visualize
