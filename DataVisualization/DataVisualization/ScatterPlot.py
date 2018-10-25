@@ -18,7 +18,7 @@ def fileVisualizer(path):
     return df
 
 
-def _2D_Scatter_Plot(dataFrame, _1st_index, _2nd_index):
+def Scatter_2D(dataFrame, _1st_index, _2nd_index):
 
     '''
     :param dataFrame: all the data you want to visualize
@@ -37,7 +37,7 @@ def _2D_Scatter_Plot(dataFrame, _1st_index, _2nd_index):
     plt.ylabel(attributeName[_2nd_index])
     plt.show()
 
-def _3D_Scatter_Plot(dataFrame, _1st_index, _2nd_index, _3rd_index):
+def Scatter_3D(dataFrame, _1st_index, _2nd_index, _3rd_index):
 
     '''
     :param dataFrame: all the data you want to visualize
@@ -63,7 +63,7 @@ def _3D_Scatter_Plot(dataFrame, _1st_index, _2nd_index, _3rd_index):
     ax.set_zlabel(attributeName[_3rd_index])
     plt.show()
 
-def _multiD_Scatter_Plot(dataFrame):
+def Scatter_Matrix(dataFrame):
     scatter_matrix(dataFrame, alpha=0.2, figsize=(6, 6), diagonal='kde')
     plt.show()
 
