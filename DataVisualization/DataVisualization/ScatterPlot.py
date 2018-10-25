@@ -21,7 +21,6 @@ def fileVisualizer(path):
 def _2D_Scatter_Plot(dataFrame, _1st_index, _2nd_index):
 
     '''
-
     :param dataFrame: all the data you want to visualize
     :param _1st_index: the first attribute signed as Ox line
     :param _2nd_index: the second attribute signed as Oy line
@@ -41,7 +40,6 @@ def _2D_Scatter_Plot(dataFrame, _1st_index, _2nd_index):
 def _3D_Scatter_Plot(dataFrame, _1st_index, _2nd_index, _3rd_index):
 
     '''
-
     :param dataFrame: all the data you want to visualize
     :param _1st_index: the first attribute signed as Ox line
     :param _2nd_index: the second attribute signed as Oy line

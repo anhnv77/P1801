@@ -1,8 +1,9 @@
-import pandas as pd
 import numpy as np
 import seaborn as sns
+import matplotlib.pyplot as plt
 
-def pairplot(dataFrame, rowsIndex = np.arange(50), colsIndex_x=None, colsIndex_y=None, height=2.5, aspect=1, kind='reg', diag_kind='hist', dropna=True):
+def pairplot(dataFrame, rowsIndex = np.arange(50), colsIndex_x=None,
+			 colsIndex_y=None, height=2.5, aspect=1, kind='reg', diag_kind='hist', dropna=True):
 	'''
         :param dataFrame: the DataFrame need ploting
         :param rowsIndex: rows you want to display in your chart:
