@@ -3,7 +3,7 @@ import DataVisualization.ScatterPlot as sct
 
 df = vsl.fileVisualizer('data\stcp-Rdataset-Diet.csv')
 
-cols = range(3, 5)
+cols = [3, 4, 6]
 rows = range(20)
 
 '''Draw barh chart plot with cols=cols, rows=rows and stacked'''
@@ -28,4 +28,4 @@ rows = range(20)
 #vsl.drawViolin(df, 0)
 
 '''Draw scatter plot with col[0] and col[3]'''
-#vsl.drawScatter(df, 0, 3)\
+#vsl.drawScatter(df, 0, 3)
