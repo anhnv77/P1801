@@ -20,3 +20,6 @@ Date: 27/10/2018
 	+) Scatter_2D
 	+) Scatter_3D
 	+) multiMatrix
+1/11/2018
+- Chuẩn hoá lại package Visual
+- Thiế kế pakage Làm sạ, chuẩn hoá dữ liệu
