@@ -34,7 +34,7 @@ rows = range(20)
 # sct.scatter_3d(df, 0, 1, 2)
 
 '''Draw matrix scatter with Ox:cols, Oy:cols'''
-# sct.scatter_matrix(df, cols, cols)
+sct.scatter_matrix(df, cols, cols)
 
 '''Draw frequency map with Ox:col[0], Oy:cols[1]'''
 # sct.frequency_map(df, 0, 1)

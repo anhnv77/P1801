@@ -77,10 +77,10 @@ def scatter_matrix(data_frame, cols_x, cols_y, rows=-1, kind='reg', diag_kind='h
     sb.set()
     if rows == -1:
         sb.pairplot(data_frame, hue=hue, x_vars=head[cols_x], y_vars=head[cols_y],
-                    kind=kind, diag_kind=diag_kind)
+                    kind=kind, diag_kind=diag_kind, markers='x')
     else:
         sb.pairplot(data_frame.iloc[rows, :], hue=hue, x_vars=head[cols_x], y_vars=head[cols_y],
-                    kind=kind, diag_kind=diag_kind)
+                    kind=kind, diag_kind=diag_kind, markers='x')
     plt.show()
 
 
