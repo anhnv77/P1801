@@ -3,12 +3,13 @@ import matplotlib.pyplot as plt
 
 pd.options.display.max_rows = 10
 
-def fileVisualizer(path):
-    '''
-        Describe file
+
+#   Describe file
+def visualizer(path):
+    """
         :param path: Path to your file
-        :return: A Data Frame of your file
-    '''
+        :return: A data frame of your file
+    """
     df = pd.read_csv(path)
 
     print(df)
@@ -16,10 +17,11 @@ def fileVisualizer(path):
     print(df.describe())
     return df
 
-def drawBar(dataFrame, rows, cols, stacked=False, horizontal=False):
-    '''
-        Draw bar plot
-        :param dataFrame: The DataFrame of your file
+
+#   Draw bar plot
+def draw_bar(data_frame, rows, cols, stacked=False, horizontal=False):
+    """
+        :param data_frame: The data frame of your file
         :param rows: Rows will be shown:
                            + pass a num to display one row
                            + pass an array [num1, num2, num3, ...] to display rows you want
@@ -29,18 +31,20 @@ def drawBar(dataFrame, rows, cols, stacked=False, horizontal=False):
         :param stacked: Your bar chart is stacked or not
         :param horizontal: Display horizontal bar
         :return: Void
-    '''
-    df = dataFrame.iloc[rows, cols]
+    """
+    df = data_frame.iloc[rows, cols]
     if horizontal:
         df.plot.barh(stacked=stacked, alpha=0.5, rot=0)
     else:
         df.plot.bar(stacked=stacked, alpha=0.5, rot=0)
     plt.show()
 
-def drawLine(dataFrame, rows, cols):
-    '''
-        Draw line plot
-        :param dataFrame: The DataFrame of your file
+
+#   Draw line plot
+def draw_line(data_frame, rows, cols):
+    """
+
+        :param data_frame: The data frame of your file
         :param rows: Rows will be shown:
                            + pass a num to display one row
                            + pass an array [num1, num2, num3, ...] to display rows you want
@@ -48,30 +52,32 @@ def drawLine(dataFrame, rows, cols):
         :param cols: Cols will be shown:
                            + similar to the rows
         :return: Void
-    '''
-    df = dataFrame.iloc[rows, cols]
+    """
+    df = data_frame.iloc[rows, cols]
     df.plot(alpha=0.5, rot=0)
     plt.show()
 
-def drawHistogram(dataFrame, cols, bins=50):
-    '''
-        Draw histogram plot
-        :param dataFrame: The DataFrame of your file
+
+#   Draw histogram plot
+def draw_hist(data_frame, cols, bins=50):
+    """
+        :param data_frame: The data_frame of your file
         :param cols: Cols will be shown:
                            + pass a num to display one col
                            + pass an array [num1, num2, num3, ...] to display cols you want
                            + pass a range(start, end) for multiple cols
         :param bins: Number of the bars in the histogram plot
         :return: Void
-    '''
-    df = dataFrame.iloc[:, cols]
+    """
+    df = data_frame.iloc[:, cols]
     df.plot.hist(bins=bins, rot=0, alpha=0.5)
     plt.show()
 
-def drawPie(dataFrame, row, cols):
-    '''
-        Draw pie plot
-        :param dataFrame: The DataFrame of your file
+
+#   Draw pie plot
+def draw_pie(data_frame, row, cols):
+    """
+        :param data_frame: The data_frame of your file
         :param rows: Rows will be shown:
                            + pass a num to display one row
                            + pass an array [num1, num2, num3, ...] to display rows you want
@@ -80,15 +86,16 @@ def drawPie(dataFrame, row, cols):
                            + similar to the rows
         :param row: A int showing the row will be drawn
         :return: Void
-    '''
-    df = dataFrame.iloc[row, cols]
+    """
+    df = data_frame.iloc[row, cols]
     df.plot.pie(rot=0)
     plt.show()
 
-def drawStem(dataFrame, rows, cols, linefmt='-.'):
-    '''
-        Draw stem plot
-        :param dataFrame: The DataFrame of your file
+
+#   Draw stem plot
+def draw_stem(data_frame, rows, cols, linefmt='-.'):
+    """
+        :param data_frame: The data_frame of your file
         :param rows: Rows will be shown:
                            + pass a num to display one row
                            + pass an array [num1, num2, num3, ...] to display rows you want
@@ -98,15 +105,16 @@ def drawStem(dataFrame, rows, cols, linefmt='-.'):
         :param cols: A int or array showing the column will be drawn
         :param linefmt: A string defining the properties of the vertical lines
         :return: Void
-    '''
-    df = dataFrame.iloc[rows, cols]
+    """
+    df = data_frame.iloc[rows, cols]
     plt.stem(df, bottom=0, linefmt=linefmt)
     plt.show()
 
-def drawBox(dataFrame, rows, cols):
-    '''
-        Draw box plot
-        :param dataFrame: The DataFrame of your file
+
+#   Draw box plot
+def draw_box(data_frame, rows, cols):
+    """
+        :param data_frame: The data_frame of your file
         :param rows: Rows will be shown:
                            + pass a num to display one row
                            + pass an array [num1, num2, num3, ...] to display rows you want
@@ -115,21 +123,22 @@ def drawBox(dataFrame, rows, cols):
                            + similar to the rows
         :param vert: Horizontal or not
         :return: Void
-    '''
-    df = dataFrame.iloc[rows, cols]
+    """
+    df = data_frame.iloc[rows, cols]
     plt.boxplot(df, vert=False)
     plt.show()
 
-def drawViolin(dataFrame, cols):
-    '''
-        Draw violin plot
-        :param dataFrame: The DataFrame of your file
+
+#   Draw violin plot
+def draw_violin(data_frame, cols):
+    """
+        :param data_frame: The data_frame of your file
         :param cols: Cols will be shown:
                            + pass a num to display one col
                            + pass an array [num1, num2, num3, ...] to display cols you want
                            + pass a range(start, end) for multiple cols
         :return: Void
-    '''
-    df = dataFrame.iloc[:, cols]
+    """
+    df = data_frame.iloc[:, cols]
     plt.violinplot(df, vert=False, showmedians=True)
     plt.show()
