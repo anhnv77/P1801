@@ -1,10 +1,10 @@
-import DataVisualization.DrawChart as vsl
-import DataVisualization.ScatterPlot as sct
+import Visualizer.DrawChart as vsl
+import Visualizer.ScatterPlot as sct
 
-df = vsl.fileVisualizer('data\housing.csv')
+df = vsl.fileVisualizer('data/housing.csv')
 
-cols = [3, 4, 6]
-rows = range(20)
+cols = range(3)
+rows = range(10)
 
 '''Draw barh chart plot with cols=cols, rows=rows and stacked'''
 #vsl.drawBar(df, rows, cols, True, True)
@@ -27,5 +27,8 @@ rows = range(20)
 '''Draw violin plot with col[0] and rows[0:max]'''
 #vsl.drawViolin(df, 0)
 
-'''Draw scatter plot with col[0] and col[3]'''
-#vsl.drawScatter(df, 0, 3)
+'''Draw 2D scatter plot with Ox:col[0] and Oy:col[1]'''
+#sct.Scatter_2D(df, 0, 1)
+
+'''Draw 2D scatter plot with Ox:col[0], Oy:col[1] and Oz:col[2]'''
+#sct.Scatter_3D(df, 0, 1, 2)
