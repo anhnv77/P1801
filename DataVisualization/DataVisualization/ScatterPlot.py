@@ -50,16 +50,18 @@ def Scatter_3D(dataFrame, _1st_index, _2nd_index, _3rd_index):
     ax.set_zlabel(attributeName[_3rd_index])
     plt.show()
 
-def multiMatrix(dataFrame, rowsIndex, colsIndex_x, colsIndex_y, kind='reg', diag_kind='hist', hue=None):
+	
+#	draw x*y plot in one figure, contain scatter plots and histogram plots (if col_x == col_y)
+def multiScatter(dataFrame, rows, cols_x, cols_y, kind='reg', diag_kind='hist', hue=None):
 	'''
 		:param dataFrame: The DataFrame need ploting
-		:param rowsIndex: Rows you want to display in your chart:
+		:param rows: Rows you want to display in your chart:
 			+ Pass a num: <row> to display one row
 			+ Pass an array: <[num1, num2, num3, ...]> to display rows you want
 			+ Pass: <range(start, end)>, for multiple rows
-		:param ColsIndex_x: cols you want to display in your chart by layber x_vars:
+		:param Cols_x: cols you want to display in your chart by layber x_vars:
 			+ The row of the figure
-		:param ColsIndex_y: cols you want to display in your chart by layber y_vars:
+		:param Cols_y: cols you want to display in your chart by layber y_vars:
 			+ The colume of the figure
 		:param Kind: Kind of plot for the non-identity relationships
 			+ Can pass one of {‘scatter’ |‘reg’}, if pass 'reg' it will add a line represent for linear relationship
@@ -67,51 +69,47 @@ def multiMatrix(dataFrame, rowsIndex, colsIndex_x, colsIndex_y, kind='reg', diag
 			+ Can pass one of {‘auto’ | ‘hist’ | ‘kde’}
 		:param hue: Variable in data to map plot aspects to different colors.
 			+ cols you want to distinguish by colors
-		:return: seaborn.axisgrid
 	'''
 
 	head = dataFrame.columns.values
 	sb.set()
-	plt.show(sb.pairplot(dataFrame.iloc[rowsIndex,:],hue=hue,x_vars=head[colsIndex_x],y_vars=head[colsIndex_y],kind=kind,diag_kind=diag_kind))
-	return sb.pairplot(dataFrame.iloc[rowsIndex,:],hue=hue,x_vars=head[colsIndex_x],y_vars=head[colsIndex_y],kind=kind,diag_kind=diag_kind)
+	plt.show(sb.pairplot(dataFrame.iloc[rows,:],hue=hue,x_vars=head[cols_x],y_vars=head[cols_y],kind=kind,diag_kind=diag_kind))
 
-def jointplot(dataFrame, rowsIndex, colsIndex_x, colsIndex_y, kind="kde"):
+	
+#	a map draws different Frequency areas, are separated by border lines
+def FrequencyMap(dataFrame, rows, cols_x, cols_y, kind="kde"):
 	'''
 	:param dataFrame: The DataFrame need ploting
-	:param rowsIndex: Rows you want to display in your chart:
+	:param rows: Rows you want to display in your chart:
 			+ Pass a num: <row> to display one row
 			+ Pass an array: <[num1, num2, num3, ...]> to display rows you want
 			+ Pass: <range(start, end)>, for multiple rows
-	:param colsIndex_x: cols you want to display in your chart by layber x:
-			+ The row of the figure
-	:param colsIndex_y: cols you want to display in your chart by layber y:
-			+ The colume of the figure
+	:param cols_x: cols you want to display in your chart by layber x:
+	:param cols_y: cols you want to display in your chart by layber y:
+		<<the cols_x size have equal cols_y size>>
 	:param kind: Kind of plot for the diagonal subplots
 			+ Can pass one of { “scatter” | “reg” | “resid” | “kde” | “hex” }
 			+  if pass "reg" it will add a line represent for linear relationship
-	:return: seaborn.axisgrid
 	'''
 	head = dataFrame.columns.values
 	sb.set()
-	plt.show(sb.jointplot(x=head[colsIndex_x],y=head[colsIndex_y],data=dataFrame.iloc[rowsIndex,:],kind=kind))
-	return sb.jointplot(x=head[colsIndex_x],y=head[colsIndex_y],data=dataFrame.iloc[rowsIndex,:],kind=kind)
-
-def lmplot(dataFrame, rowsIndex, colsIndex_x, colsIndex_y, hue=None):
+	plt.show(sb.jointplot(x=head[cols_x],y=head[cols_y],data=dataFrame.iloc[rows,:],kind=kind))
+	
+	
+#	a scatter plot with a curly line represent for linear relationship between cols_x and cols_y
+def linearLine(dataFrame, rows, cols_x, cols_y, hue=None):
 	'''
-		:param dataFrame: The DataFrame need ploting
-		:param rowsIndex: Rows you want to display in your chart:
-			+ Pass a num: <row> to display one row
-			+ Pass an array: <[num1, num2, num3, ...]> to display rows you want
-			+ Pass: <range(start, end)>, for multiple rows
-		:param ColsIndex_x: cols you want to display in your chart by layber x_vars:
-			+ The row of the figure
-		:param ColsIndex_y: cols you want to display in your chart by layber y_vars:
-			+ The colume of the figure
-		:param hue: Variable in data to map plot aspects to different colors.
-			+ cols you want to distinguish by colors
-		:return: seaborn.axisgrid
+	:param dataFrame: The DataFrame need ploting
+	:param rows: Rows you want to display in your chart:
+		+ Pass a num: <row> to display one row
+		+ Pass an array: <[num1, num2, num3, ...]> to display rows you want
+		+ Pass: <range(start, end)>, for multiple rows
+	:param cols_x: cols you want to display in your chart by layber x:
+	:param cols_y: cols you want to display in your chart by layber y:
+		<<the cols_x size have equal cols_y size>>
+	:param hue: Variable in data to map plot aspects to different colors.
+		+ cols you want to distinguish by colors
 	'''
 	head = dataFrame.columns.values
 	sb.set()
-	plt.show(sb.lmplot(x=head[colsIndex_x], y=head[colsIndex_y], data=dataFrame.iloc[rowsIndex,:], hue=hue, order=2))
-	return sb.lmplot(x=head[colsIndex_x], y=head[colsIndex_y], data=dataFrame.iloc[rowsIndex,:], hue=hue, order=2)
+	plt.show(sb.lmplot(x=head[cols_x], y=head[cols_y], data=dataFrame.iloc[rows,:], hue=hue, order=2))
