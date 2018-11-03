@@ -54,9 +54,14 @@ def scatter_3d(data_frame, col_x, col_y, col_z):
 
 
 #	Draw x*y plot in one figure, contain scatter plots and histogram plots (if col_x and col_y are the same)
-def scatter_matrix(data_frame, cols_x, cols_y, kind='reg', diag_kind='hist', hue=None):
+def scatter_matrix(data_frame, cols_x, cols_y, rows=-1, kind='reg', diag_kind='hist', hue=None):
     """
         :param data_frame: The data_frame of your file
+        :param rows: Rows will be shown:
+            + pass a num to display one row
+            + pass an array [num1, num2, num3, ...] to display rows you want
+            + pass a range(start, end) for multiple rows
+            + if don't pass or pass -1 will draw all the rows
         :param cols_x: cols you want to display in your chart by label x_vars:
             + The row of the figure
         :param cols_y: cols you want to display in your chart by label y_vars:
@@ -70,14 +75,24 @@ def scatter_matrix(data_frame, cols_x, cols_y, kind='reg', diag_kind='hist', hue
     """
     head = data_frame.columns.values
     sb.set()
-    plt.show(sb.pairplot(data_frame, hue=hue, x_vars=head[cols_x], y_vars=head[cols_y],
-                         kind=kind, diag_kind=diag_kind, markers='x'))
+    if rows == -1:
+        sb.pairplot(data_frame, hue=hue, x_vars=head[cols_x], y_vars=head[cols_y],
+                    kind=kind, diag_kind=diag_kind)
+    else:
+        sb.pairplot(data_frame.iloc[rows, :], hue=hue, x_vars=head[cols_x], y_vars=head[cols_y],
+                    kind=kind, diag_kind=diag_kind)
+    plt.show()
 
 
 #   A map draws different Frequency areas, are separated by border lines
-def frequency_map(data_frame, col_x, col_y, kind="kde"):
+def frequency_map(data_frame, col_x, col_y, rows=-1, kind="kde"):
     """
         :param data_frame: The data_frame of your file
+        :param rows: Rows will be shown:
+            + pass a num to display one row
+            + pass an array [num1, num2, num3, ...] to display rows you want
+            + pass a range(start, end) for multiple rows
+            + if don't pass or pass -1 will draw all the rows
         :param col_x: col you want to display in your chart by label x:
         :param col_y: col you want to display in your chart by label y:
         :param kind: Kind of plot for the diagonal subplots
@@ -86,18 +101,22 @@ def frequency_map(data_frame, col_x, col_y, kind="kde"):
     """
     head = data_frame.columns.values
     sb.set()
-    sb.jointplot(data=data_frame, x=head[col_x], y=head[col_y], kind=kind)
+    if rows == -1:
+        sb.jointplot(data=data_frame, x=head[col_x], y=head[col_y], kind=kind)
+    else:
+        sb.jointplot(data=data_frame.iloc[rows, :], x=head[col_x], y=head[col_y], kind=kind)
     plt.show()
 
 
 # A scatter plot with a curly line represent for linear relationship between cols_x and cols_y
-def curly_line(data_frame, col_x, col_y, hue=None):
+def curly_line(data_frame, col_x, col_y, rows=-1, hue=None):
     """
         :param data_frame: The data_frame of your file
-        :param rows: Rows you want to display in your chart:
-            + Pass a num: <row> to display one row
-            + Pass an array: <[num1, num2, num3, ...]> to display rows you want
-            + Pass: <range(start, end)>, for multiple rows
+        :param rows: Rows will be shown:
+            + pass a num to display one row
+            + pass an array [num1, num2, num3, ...] to display rows you want
+            + pass a range(start, end) for multiple rows
+            + if don't pass or pass -1 will draw all the rows
         :param col_x: col you want to display in your chart by label x:
         :param col_y: col you want to display in your chart by label y:
         :param hue: Variable in data to map plot aspects to different colors.
@@ -105,5 +124,8 @@ def curly_line(data_frame, col_x, col_y, hue=None):
     """
     head = data_frame.columns.values
     sb.set()
-    sb.lmplot(data=data_frame, x=head[col_x], y=head[col_y], hue=hue, order=2)
+    if rows == -1:
+        sb.lmplot(data=data_frame, x=head[col_x], y=head[col_y], hue=hue, order=2)
+    else:
+        sb.lmplot(data=data_frame.iloc[rows, :], x=head[col_x], y=head[col_y], hue=hue, order=2)
     plt.show()

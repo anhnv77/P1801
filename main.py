@@ -40,4 +40,4 @@ rows = range(20)
 # sct.frequency_map(df, 0, 1)
 
 '''Draw scatter with curly linear line with Ox:col[0], Oy:cols[3]'''
-sct.curly_line(df, 0, 3)
+# sct.curly_line(df, 0, 3)
