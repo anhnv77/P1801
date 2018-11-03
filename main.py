@@ -1,4 +1,4 @@
-import Visualizer.DrawChart as vsl
+import Visualizer.BasicPlot as vsl
 import Visualizer.ScatterPlot as sct
 
 df = vsl.fileVisualizer('data/housing.csv')
