@@ -1,5 +1,3 @@
-import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sb
 from pandas.plotting import scatter_matrix
@@ -30,7 +28,7 @@ def scatter_2d(data_frame, col_x, col_y):
 #   Draw 3D scatter
 def scatter_3d(data_frame, col_x, col_y, col_z):
     """
-        :param data_frame: The data_frame of your file
+        :param data_frame: The data frame of your file
         :param col_x: the first column signed as Ox line
         :param col_y: the second column signed as Oy line
         :param col_z: the third column signed as Oz line
@@ -56,17 +54,17 @@ def scatter_3d(data_frame, col_x, col_y, col_z):
 #	Draw x*y plot in one figure, contain scatter plots and histogram plots (if col_x and col_y are the same)
 def scatter_matrix(data_frame, cols_x, cols_y, kind='reg', diag_kind='hist', hue=None):
     """
-        :param data_frame: The data frame of your file
-        :param cols_x: cols you want to display in your chart by label x_vars:
-            + The row of the figure
-        :param cols_y: cols you want to display in your chart by label y_vars:
-            + The column of the figure
-        :param kind: Kind of plot for the non-identity relationships
-            + Can pass one of {‘scatter’ |‘reg’}, if pass 'reg' it will add a line represent for linear relationship
-        :param diag_kind: Kind of plot for the diagonal subplots
-            + Can pass one of {‘auto’ | ‘hist’ | ‘kde’}
-        :param hue: Variable in data to map plot aspects to different colors.
-        + cols you want to distinguish by colors
+        :param data_frame: the data frame of your file
+        :param cols_{x, y} : lists of variable names, optional
+            Variables within data to use separately for the rows and columns of the figure;
+            i.e. to make a non-square plot.
+        :param kind: {'scatter', 'reg'}, optional
+            Kind of plot for the non-identity relationships.
+        :param diag_kind: {'auto', 'hist’, 'kde'}, optional
+            Kind of plot for the diagonal subplots. The default depends on whether "hue" is used or not.
+        :param hue: string (variable name), optional
+            Variable in data to map plot aspects to different colors.
+        :return: Void
     """
     head = data_frame.columns.values
     sb.set()
@@ -81,9 +79,8 @@ def frequency_map(data_frame, col_x, col_y, kind="kde"):
         :param data_frame: The data frame of your file
         :param col_x: col you want to display in your chart by label x:
         :param col_y: col you want to display in your chart by label y:
-        :param kind: Kind of plot for the diagonal subplots
-                + Can pass one of { “scatter” | “reg” | “resid” | “kde” | “hex” }
-                +  if pass "reg" it will add a line represent for linear relationship
+        :param kind: {'scatter', 'reg'}, optional
+            Kind of plot for the non-identity relationships.
     """
     head = data_frame.columns.values
     sb.set()
@@ -97,8 +94,8 @@ def curly_line(data_frame, col_x, col_y, hue=None):
         :param data_frame: The data frame of your file
         :param col_x: col you want to display in your chart by label x:
         :param col_y: col you want to display in your chart by label y:
-        :param hue: Variable in data to map plot aspects to different colors.
-            + cols you want to distinguish by colors
+        :param hue: string (variable name), optional
+            Variable in data to map plot aspects to different colors.
     """
     head = data_frame.columns.values
     sb.set()
