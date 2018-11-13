@@ -64,7 +64,7 @@ def scatter_matrix(data_frame, cols_x, cols_y, kind='reg', diag_kind='hist', hue
             Kind of plot for the diagonal subplots. The default depends on whether "hue" is used or not.
         :param hue: string (variable name), optional
             Variable in data to map plot aspects to different colors.
-        :return: Void
+        :return: None
     """
     head = data_frame.columns.values
     sb.set()

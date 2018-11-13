@@ -13,6 +13,12 @@ def read(path, missing_na=['NA', 'NaN']):
 
 
 def noisy(data_frame, obj,  col):
+    """
+    :param data_frame: Data frame
+    :param obj: int or str
+    :param col: column to handle noisy data
+    :return: None
+    """
     cnt = 0
     for row in data_frame[data_frame.columns.values[col]]:
         try:
@@ -27,5 +33,3 @@ def noisy(data_frame, obj,  col):
             elif obj is 'str':
                 data_frame.iloc[cnt, col] = np.nan
         cnt += 1
-
-

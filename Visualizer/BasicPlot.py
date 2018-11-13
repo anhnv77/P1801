@@ -30,7 +30,7 @@ def draw_bar(data_frame, rows, cols, stacked=False, horizontal=False):
                            + similar to the rows
         :param stacked: Your bar chart is stacked or not
         :param horizontal: Display horizontal bar
-        :return: Void
+        :return: None
     """
     df = data_frame.iloc[rows, cols]
     if horizontal:
@@ -51,7 +51,7 @@ def draw_line(data_frame, rows, cols):
                            + pass a range(start, end) for multiple rows
         :param cols: Cols will be shown:
                            + similar to the rows
-        :return: Void
+        :return: None
     """
     df = data_frame.iloc[rows, cols]
     df.plot(alpha=0.5, rot=0)
@@ -67,7 +67,7 @@ def draw_hist(data_frame, cols, bins=50):
                            + pass an array [num1, num2, num3, ...] to display cols you want
                            + pass a range(start, end) for multiple cols
         :param bins: Number of the bars in the histogram plot
-        :return: Void
+        :return: None
     """
     df = data_frame.iloc[:, cols]
     df.plot.hist(bins=bins, rot=0, alpha=0.5)
@@ -85,7 +85,7 @@ def draw_pie(data_frame, row, cols):
         :param cols: Cols will be shown:
                            + similar to the rows
         :param row: A int showing the row will be drawn
-        :return: Void
+        :return: None
     """
     df = data_frame.iloc[row, cols]
     df.plot.pie(rot=0)
@@ -104,7 +104,7 @@ def draw_stem(data_frame, rows, cols, linefmt='-.'):
                            + similar to the rows
         :param cols: A int or array showing the column will be drawn
         :param linefmt: A string defining the properties of the vertical lines
-        :return: Void
+        :return: None
     """
     df = data_frame.iloc[rows, cols]
     plt.stem(df, bottom=0, linefmt=linefmt)
@@ -122,7 +122,7 @@ def draw_box(data_frame, rows, cols):
         :param cols: Cols will be shown:
                            + similar to the rows
         :param vert: Horizontal or not
-        :return: Void
+        :return: None
     """
     df = data_frame.iloc[rows, cols]
     plt.boxplot(df, vert=False)
@@ -137,8 +137,34 @@ def draw_violin(data_frame, cols):
                            + pass a num to display one col
                            + pass an array [num1, num2, num3, ...] to display cols you want
                            + pass a range(start, end) for multiple cols
-        :return: Void
+        :return: None
     """
     df = data_frame.iloc[:, cols]
     plt.violinplot(df, vert=False, showmedians=True)
+    plt.show()
+
+
+# Parallel_coordinate
+def parallel_coordinate(df,label):
+    """
+    :param df: Data frame
+    :param label: Label
+    :return: None
+    """
+    from pandas.plotting import parallel_coordinates
+    parallel_coordinates(df,label)
+    plt.show()
+
+
+# Heatmap
+def heatmap(df):
+    """
+    Show heatmap
+    :param df:  dataframe
+    :return: None
+    """
+    from pandas import DataFrame
+    corr = DataFrame(df.corr())
+    print(corr)
+    plt.pcolor(corr)
     plt.show()

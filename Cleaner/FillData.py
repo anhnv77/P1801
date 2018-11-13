@@ -1,5 +1,10 @@
-# None, 0, mean, kNN, back, forward, random
 def dropna(data_frame, thresh=None, inplace=False):
+    """
+    :param data_frame: Data frame
+    :param thresh: Numbers of values non NaN
+    :param inplace: replace in file
+    :return: None
+    """
     if not thresh:
         thresh = data_frame.columns.size
 
@@ -8,6 +13,16 @@ def dropna(data_frame, thresh=None, inplace=False):
 
 
 def basic_fill(data_frame, col, fill_value, inplace=False):
+    """
+    :param data_frame: Data frame
+    :param col: column to fill
+    :param fill_value:
+        bfill: fill backward
+        ffill: fill forward
+        mean: fill by mean
+    :param inplace: replace in file
+    :return: None
+    """
     df = data_frame
 
     if fill_value == 'back':

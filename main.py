@@ -3,11 +3,11 @@ import Visualizer.ScatterPlot as sct
 import Cleaner.PreProcessing as pp
 import Cleaner.FillData as fd
 
-# df = vsl.visualizer('data/housing.csv')
+df = vsl.visualizer('data/housing.csv')
 
 cols = range(3)
 rows = range(20)
-"""
+
 '''Draw horizontal bar chart plot with cols=cols, rows=rows and stacked'''
 # vsl.draw_bar(df, rows, cols, True, True)
 
@@ -43,12 +43,3 @@ rows = range(20)
 
 '''Draw scatter with curly linear line with Ox:col[0], Oy:cols[3]'''
 # sct.curly_line(df, 0, 3)
-"""
-
-df = pp.read('data/test.csv', ['n/a', 'NA', 'na', '--'])
-pp.noisy(df, 'int', 3)
-pp.noisy(df, 'str', 4)
-print(df, '\n')
-
-testdf = fd.basic_fill(df, 2, 'black')
-print(testdf)
