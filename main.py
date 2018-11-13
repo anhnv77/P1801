@@ -1,6 +1,7 @@
 import Visualizer.BasicPlot as vsl
 import Visualizer.ScatterPlot as sct
-from Cleaner import PreProcessing
+import Cleaner.PreProcessing as pp
+import Cleaner.FillData as fd
 
 # df = vsl.visualizer('data/housing.csv')
 
@@ -44,5 +45,10 @@ rows = range(20)
 # sct.curly_line(df, 0, 3)
 """
 
-df = PreProcessing.read('data/test.csv', ['n/a', 'NA', 'na', '--'])
-PreProcessing.noisy_replace(df, 'str', 4)
+df = pp.read('data/test.csv', ['n/a', 'NA', 'na', '--'])
+pp.noisy(df, 'int', 3)
+pp.noisy(df, 'str', 4)
+print(df, '\n')
+
+testdf = fd.basic_fill(df, 2, 'black')
+print(testdf)

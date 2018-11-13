@@ -7,13 +7,13 @@ def read(path, missing_na=['NA', 'NaN']):
     df.drop_duplicates(inplace=True)
     count_na = df.isna().sum()
     print(df)
-    print(count_na)
+    print("\nNaN in columns: ")
+    print(count_na, '\n')
     return df
 
 
-def noisy_replace(data_frame, obj,  col):
+def noisy(data_frame, obj,  col):
     cnt = 0
-    print(data_frame.iloc[:, col])
     for row in data_frame[data_frame.columns.values[col]]:
         try:
             int(row)
@@ -27,6 +27,5 @@ def noisy_replace(data_frame, obj,  col):
             elif obj is 'str':
                 data_frame.iloc[cnt, col] = np.nan
         cnt += 1
-    print(data_frame.iloc[:, col])
 
 
