@@ -142,3 +142,27 @@ def draw_violin(data_frame, cols):
     df = data_frame.iloc[:, cols]
     plt.violinplot(df, vert=False, showmedians=True)
     plt.show()
+#parallel_coordinate
+def parallel_coordinate(df,label):
+    '''
+
+    :param df: Data frame
+    :param label: Label
+    :return: None
+    '''
+    from pandas.plotting import parallel_coordinates
+    parallel_coordinates(df,label)
+    plt.show()
+
+#Heatmap
+def heatmap(df):
+    '''
+    Show heatmap
+    :param df:  dataframe
+    :return: None
+    '''
+    from pandas import DataFrame
+    corr = DataFrame(df.corr())
+    print(corr)
+    plt.pcolor(corr)
+    plt.show()
